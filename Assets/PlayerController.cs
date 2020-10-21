@@ -13,21 +13,17 @@ public class PlayerController : NetworkBehaviour
   public float runSpeed = 20.0f;
   Sprite localPlayerSprite;
 
-  bool facingRight = false;
-
   void Start()
   {
     body = GetComponent<Rigidbody2D>();
-
     if (!isLocalPlayer)
     {
-      localPlayerSprite = Resources.Load<Sprite>("mages");
-
+      localPlayerSprite = Resources.Load<Sprite>("mage-black");
       GetComponent<SpriteRenderer>().sprite = localPlayerSprite;
     }
     else
     {
-      localPlayerSprite = Resources.Load<Sprite>("mages");
+      localPlayerSprite = Resources.Load<Sprite>("mage-white");
 
       GetComponent<SpriteRenderer>().sprite = localPlayerSprite;
     }
