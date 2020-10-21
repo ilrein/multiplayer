@@ -19,16 +19,15 @@ public class PlayerController : NetworkBehaviour
 
   void Update()
   {
-        if (!isLocalPlayer)
-        {
-            return;
-        }
-        horizontal = Input.GetAxisRaw("Horizontal");
+    horizontal = Input.GetAxisRaw("Horizontal");
     vertical = Input.GetAxisRaw("Vertical");
   }
 
   private void FixedUpdate()
   {
+    if (!isLocalPlayer)
+      return;
+
     body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
   }
 }
