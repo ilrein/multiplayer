@@ -15,16 +15,15 @@ public class PlayerController : NetworkBehaviour
   void Start()
   {
     body = GetComponent<Rigidbody2D>();
-
     if (!isLocalPlayer)
     {
-      Sprite localPlayerSprite = Resources.Load<Sprite>("mages");
+      Sprite localPlayerSprite = Resources.Load<Sprite>("mage-black");
 
       GetComponent<SpriteRenderer>().sprite = localPlayerSprite;
     }
     else
     {
-      Sprite localPlayerSprite = Resources.Load<Sprite>("mages");
+      Sprite localPlayerSprite = Resources.Load<Sprite>("mage-white");
 
       GetComponent<SpriteRenderer>().sprite = localPlayerSprite;
     }
