@@ -8,7 +8,7 @@ public class PlayerController : NetworkBehaviour
   Rigidbody2D body;
   Animator animator;
 
-    float horizontal;
+  float horizontal;
   float vertical;
 
   public float runSpeed = 10.0f;
