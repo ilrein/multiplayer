@@ -15,9 +15,17 @@ public class PlayerController : NetworkBehaviour
   void Start()
   {
     body = GetComponent<Rigidbody2D>();
-  }
 
-  void Update()
+    Color playerColor = new Color(
+        Random.Range(0f, 1f),
+        Random.Range(0f, 1f),
+        Random.Range(0f, 1f)
+    );
+
+    GetComponent<SpriteRenderer>().color = playerColor;
+   }
+
+    void Update()
   {
     horizontal = Input.GetAxisRaw("Horizontal");
     vertical = Input.GetAxisRaw("Vertical");
