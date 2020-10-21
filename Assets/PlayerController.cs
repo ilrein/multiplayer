@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : NetworkBehaviour
 {
   Rigidbody2D body;
 
@@ -18,7 +19,11 @@ public class PlayerController : MonoBehaviour
 
   void Update()
   {
-    horizontal = Input.GetAxisRaw("Horizontal");
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+        horizontal = Input.GetAxisRaw("Horizontal");
     vertical = Input.GetAxisRaw("Vertical");
   }
 
