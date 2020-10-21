@@ -10,7 +10,7 @@ public class PlayerController : NetworkBehaviour
   float horizontal;
   float vertical;
 
-  public float runSpeed = 20.0f;
+  public float runSpeed = 10.0f;
   Sprite localPlayerSprite;
 
   void Start()
