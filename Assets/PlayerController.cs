@@ -16,16 +16,21 @@ public class PlayerController : NetworkBehaviour
   {
     body = GetComponent<Rigidbody2D>();
 
-    Color playerColor = new Color(
-        Random.Range(0f, 1f),
-        Random.Range(0f, 1f),
-        Random.Range(0f, 1f)
-    );
+    if (!isLocalPlayer)
+    {
+      Sprite localPlayerSprite = Resources.Load<Sprite>("mages");
 
-    GetComponent<SpriteRenderer>().color = playerColor;
-   }
+      GetComponent<SpriteRenderer>().sprite = localPlayerSprite;
+    }
+    else
+    {
+      Sprite localPlayerSprite = Resources.Load<Sprite>("mages");
 
-    void Update()
+      GetComponent<SpriteRenderer>().sprite = localPlayerSprite;
+    }
+  }
+
+  void Update()
   {
     horizontal = Input.GetAxisRaw("Horizontal");
     vertical = Input.GetAxisRaw("Vertical");
