@@ -11,6 +11,9 @@ public class PlayerController : NetworkBehaviour
   float vertical;
 
   public float runSpeed = 20.0f;
+  Sprite localPlayerSprite;
+
+  bool facingRight = false;
 
   void Start()
   {
@@ -18,13 +21,13 @@ public class PlayerController : NetworkBehaviour
 
     if (!isLocalPlayer)
     {
-      Sprite localPlayerSprite = Resources.Load<Sprite>("mages");
+      localPlayerSprite = Resources.Load<Sprite>("mages");
 
       GetComponent<SpriteRenderer>().sprite = localPlayerSprite;
     }
     else
     {
-      Sprite localPlayerSprite = Resources.Load<Sprite>("mages");
+      localPlayerSprite = Resources.Load<Sprite>("mages");
 
       GetComponent<SpriteRenderer>().sprite = localPlayerSprite;
     }
@@ -34,6 +37,16 @@ public class PlayerController : NetworkBehaviour
   {
     horizontal = Input.GetAxisRaw("Horizontal");
     vertical = Input.GetAxisRaw("Vertical");
+
+    if (horizontal > 0)
+    {
+      transform.localRotation = Quaternion.Euler(transform.localRotation.x, 180f, transform.localRotation.z);
+    }
+
+    if (horizontal < 0)
+    {
+      transform.localRotation = Quaternion.Euler(transform.localRotation.x, 0f, transform.localRotation.z);
+    }
   }
 
   private void FixedUpdate()
