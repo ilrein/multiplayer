@@ -36,36 +36,24 @@ public class PlayerController : NetworkBehaviour
   {
     horizontal = Input.GetAxisRaw("Horizontal");
     vertical = Input.GetAxisRaw("Vertical");
+  }
 
+  private void FixedUpdate()
+  {
+    animator.SetFloat("directionX", horizontal);
+    animator.SetFloat("directionY", vertical);
 
-        //if (horizontal > 0)
-        //{
-        //  transform.localRotation = Quaternion.Euler(transform.localRotation.x, 180f, transform.localRotation.z);
-        //}
-
-        //if (horizontal < 0)
-        //{
-        //  transform.localRotation = Quaternion.Euler(transform.localRotation.x, 0f, transform.localRotation.z);
-        //}
+    if (horizontal == 0 && vertical == 0)
+    {
+      animator.enabled = false;
+    }
+    else
+    {
+      animator.enabled = true;
     }
 
-    private void FixedUpdate()
-  {
-    if (!isLocalPlayer)
-      return;
+    if (!isLocalPlayer) return;
 
-        animator.SetFloat("directionX", horizontal);
-        animator.SetFloat("directionY", vertical);
-
-        if(horizontal == 0 && vertical == 0)
-        {
-          animator.enabled = false;
-        }
-        else
-        {
-          animator.enabled = true;
-        }
-
-        body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+    body.velocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
   }
 }
