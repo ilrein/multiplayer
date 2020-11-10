@@ -26,7 +26,7 @@ public class PlayerController : NetworkBehaviour
     sprites = Resources.LoadAll<Sprite>("mage-black");
     renderer.sprite = sprites[5];
 
-    vcam = GameObject.Find("vcam").GetComponent<CinemachineVirtualCamera>();
+    
   }
 
   void Update()
@@ -101,8 +101,7 @@ public class PlayerController : NetworkBehaviour
   {
     if (isLocalPlayer)
     {
-      vcam.LookAt = GameObject.Find(GetPlayerObjectName()).transform;
-      vcam.Follow = GameObject.Find(GetPlayerObjectName()).transform;
+      
 
       // if running diagonally, reduce speed multiplier
       if (horizontal != 0 && vertical != 0)
@@ -115,9 +114,11 @@ public class PlayerController : NetworkBehaviour
     }
   }
 
-  public string GetPlayerObjectName()
+  public override void OnStartLocalPlayer()
   {
-    string val = $"PlayerPrefab {playerControllerId + 1}(Clone)";
-    return val;
+    vcam = GameObject.Find("vcam").GetComponent<CinemachineVirtualCamera>();
+
+    vcam.LookAt = gameObject.transform;
+    vcam.Follow = gameObject.transform;
   }
 }
