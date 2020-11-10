@@ -25,18 +25,16 @@ public class PlayerController : NetworkBehaviour
 
     sprites = Resources.LoadAll<Sprite>("mage-black");
     renderer.sprite = sprites[5];
-
-    
   }
 
   void Update()
   {
-    if (isLocalPlayer)
-    {
-      horizontal = Input.GetAxisRaw("Horizontal");
-      vertical = Input.GetAxisRaw("Vertical");
-      StartCoroutine(Animate());
-    }
+    if (!isLocalPlayer) return;
+
+    horizontal = Input.GetAxisRaw("Horizontal");
+    vertical = Input.GetAxisRaw("Vertical");
+
+    StartCoroutine(Animate());
   }
 
   IEnumerator Animate()
@@ -103,8 +101,6 @@ public class PlayerController : NetworkBehaviour
   {
     if (isLocalPlayer)
     {
-      
-
       // if running diagonally, reduce speed multiplier
       if (horizontal != 0 && vertical != 0)
       {
