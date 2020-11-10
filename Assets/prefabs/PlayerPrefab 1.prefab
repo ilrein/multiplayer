@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: -7654392966295523415}
   - component: {fileID: 8476319553940888320}
   - component: {fileID: 3666985578281094491}
-  - component: {fileID: 5582721986733889249}
   m_Layer: 0
   m_Name: PlayerPrefab 1
   m_TagString: Player
@@ -177,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94763a7e06e862d4f9be8393725fd660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 10
+  moveSpeed: 5
 --- !u!61 &8476319553940888320
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -219,25 +218,6 @@ MonoBehaviour:
   castPoint: {fileID: 7255310280787067092}
   fireball: {fileID: 1181403166766310176, guid: dc8ccff6559705448a0ac54159ac54d2,
     type: 3}
---- !u!95 &5582721986733889249
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2260791619772766219}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d30211eae83524d1b9c5c8d4e3703303, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4087867881502832376
 GameObject:
   m_ObjectHideFlags: 0

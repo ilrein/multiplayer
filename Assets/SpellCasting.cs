@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
+#pragma warning disable CS0618 // Type or member is obsolete
 public class SpellCasting : NetworkBehaviour
 {
   public Transform castPoint;
