@@ -1,10 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
+using Cinemachine;
 
 public class IslandGenerator : MonoBehaviour
 {
+  public CinemachineVirtualCamera vcam;
+
   //public TileBase waterTile;
   public TileBase grassTile;
   public Tilemap tileMap;
@@ -15,17 +16,20 @@ public class IslandGenerator : MonoBehaviour
     GenerateBlock();
   }
 
+  void Update()
+  {
+  }
+
   // rules -> super cool
   // massive dynamic width/height
   // intersperse water riles
 
   void GenerateBlock()
   {
-    for (int x = 0; x < 10; x++)
+    for (int x = -100; x < 100; x++)
     {
-      for (int y = 0; y < 10; y++)
+      for (int y = -100; y < 100; y++)
       {
-        Debug.Log("setting tile");
         tileMap.SetTile(new Vector3Int(x, y, 0), grassTile);
       }
     }

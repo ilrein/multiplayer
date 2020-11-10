@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Cinemachine;
 
 #pragma warning disable CS0618 // Type or member is obsolete
 public class PlayerController : NetworkBehaviour
@@ -15,6 +16,8 @@ public class PlayerController : NetworkBehaviour
   public float moveSpeed = 5.0f;
   Sprite[] sprites;
 
+  CinemachineVirtualCamera vcam;
+
   void Start()
   {
     rb = GetComponent<Rigidbody2D>();
@@ -22,6 +25,8 @@ public class PlayerController : NetworkBehaviour
 
     sprites = Resources.LoadAll<Sprite>("mage-black");
     renderer.sprite = sprites[5];
+
+    vcam = GameObject.Find("vcam").GetComponent<CinemachineVirtualCamera>();
   }
 
   void Update()
@@ -94,10 +99,11 @@ public class PlayerController : NetworkBehaviour
 
   private void FixedUpdate()
   {
-
-
     if (isLocalPlayer)
     {
+      vcam.LookAt = GameObject.Find(GetPlayerObjectName()).transform;
+      vcam.Follow = GameObject.Find(GetPlayerObjectName()).transform;
+
       // if running diagonally, reduce speed multiplier
       if (horizontal != 0 && vertical != 0)
       {
@@ -107,5 +113,11 @@ public class PlayerController : NetworkBehaviour
         rb.velocity = new Vector2(horizontal * moveSpeed, vertical * moveSpeed);
       }
     }
+  }
+
+  public string GetPlayerObjectName()
+  {
+    string val = $"PlayerPrefab {playerControllerId + 1}(Clone)";
+    return val;
   }
 }
