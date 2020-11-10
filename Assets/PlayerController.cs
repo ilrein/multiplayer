@@ -31,10 +31,12 @@ public class PlayerController : NetworkBehaviour
 
   void Update()
   {
-    horizontal = Input.GetAxisRaw("Horizontal");
-    vertical = Input.GetAxisRaw("Vertical");
-
-    StartCoroutine(Animate());
+    if (isLocalPlayer)
+    {
+      horizontal = Input.GetAxisRaw("Horizontal");
+      vertical = Input.GetAxisRaw("Vertical");
+      StartCoroutine(Animate());
+    }
   }
 
   IEnumerator Animate()
